@@ -25,17 +25,21 @@ userRoute.post("/signup", async (c) => {
   const { success } = signUpSchema.safeParse(body);
 
   if (!success) {
+    c.status(403);
     return c.json({
       msg: "invalid input",
     });
   }
 
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: body,
   });
 
+  const token = await sign({ id: user.id }, c.env.JWT_SECRET);
+
   return c.json({
     msg: "user created successfully",
+    token
   });
 });
 
@@ -46,6 +50,7 @@ userRoute.post("/signin", async (c) => {
   const { success } = signInSchema.safeParse(body);
 
   if (!success) {
+    c.status(403);
     return c.json({
       msg: "invalid input",
     });
@@ -57,11 +62,11 @@ userRoute.post("/signin", async (c) => {
       password: body.password,
     },
   });
-
+  
   if (!user) {
     c.status(403);
     return c.json({
-      msg: "user doesn't exist",
+      msg: "Invalid Credentials",
     });
   }
 
