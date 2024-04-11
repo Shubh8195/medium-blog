@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
 
-import { signInSchema, signUpSchema } from "../utils";
+import { signInSchema, signUpSchema } from "@shubh_negi/medium-types";
 
 const userRoute = new Hono<{
   Bindings: {

@@ -1,6 +1,6 @@
 import { Context, Hono } from "hono";
 import { AuthMiddleware } from "../middlewares/auth";
-import { blogCreateSchema, blogUpdateSchema } from "../utils";
+import { blogCreateSchema, blogUpdateSchema } from "@shubh_negi/medium-types";
 
 export const blogRoute = new Hono<{
   Bindings: {
