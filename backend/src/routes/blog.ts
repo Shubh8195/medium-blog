@@ -18,7 +18,15 @@ blogRoute.use("/*", AuthMiddleware);
 blogRoute.get("/bulk", async (c: Context) => {
   const prisma = c.get("prisma");
 
-  const posts = await prisma.post.findMany({});
+  const posts = await prisma.post.findMany({
+    include: {      
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
+  });
 
   return c.json(posts);
 });
