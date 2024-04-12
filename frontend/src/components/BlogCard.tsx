@@ -20,7 +20,7 @@ const BlogCard = ({
     <div className="flex flex-col w-full p-2 gap-2 border-b ">
       <div className="flex gap-2 items-center">
         <Avatar authorname={authorname} />
-        <p className="text-black font-semibold">{authorname}</p>
+        <p className="text-black font-semibold capitalize">{authorname}</p>
         <div className="h-1 w-1 rounded-full bg-slate-400"></div>
         <p className="text-slate-600">{publishedDate}</p>
       </div>
@@ -31,13 +31,13 @@ const BlogCard = ({
               {title}
             </Link>
             <div className="hidden md:block mt-2">
-              {content.slice(0, 500) + "..."}
+              {content.slice(0, 250) + "..."}
             </div>
           </div>
-          <div>{Math.ceil(content.length / 100) + " minutes"}</div>
+          <div className="mt-3">{Math.ceil(content.length / 100) + " minutes"}</div>
         </div>
         <div className="basis-1/4 md:max-w-[300px] min-w-[100px] sm:min-w-[200px]">
-          <img src={featuredImg} alt="featuredImg" className="" />
+          <img src={featuredImg} alt="featuredImg" />
         </div>
       </div>
     </div>

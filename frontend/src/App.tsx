@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp";
 import Blog from "./pages/Blog";
 import Blogs from "./pages/Blogs";
 import { Toaster } from "react-hot-toast";
+import Publish from "./pages/Publish";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blog/:id" element={<Blog />} />
+          <Route path="/publish" element={<Publish />} />
         </Routes>
       </BrowserRouter>
     </>
