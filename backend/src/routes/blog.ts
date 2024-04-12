@@ -39,6 +39,13 @@ blogRoute.get("/:id", async (c: Context) => {
     where: {
       id,
     },
+    include: {      
+      author: {
+        select: {
+          name: true,
+        },
+      },
+    },
   });
 
   return c.json(post);
