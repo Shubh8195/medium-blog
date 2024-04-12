@@ -10,7 +10,7 @@ const Blogs = () => {
   return (
     <>
       <AppBar />
-      {!loading ? (
+      {loading ? (
         <>
           <SkeletonBlogCard />
           <SkeletonBlogCard />
