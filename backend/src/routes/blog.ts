@@ -59,6 +59,7 @@ blogRoute.post("/", async (c: Context) => {
 
   const { success } = blogCreateSchema.safeParse(body);
   if (!success) {
+    c.status(403);
     return c.json({
       msg: "invalid input",
     });
