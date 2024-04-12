@@ -36,3 +36,30 @@ export const useBlogs = () => {
 
   return { loading, blogs };
 };
+
+export const useBlog = ( id: string ) => {
+  const [loading, setLoading] = useState(true);
+  const [blog, setBlog] = useState<BlogResponse>();
+
+  async function getBlog(id: string) {
+    try {
+      const { data } = await api.get(`/blog/${id}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      setBlog(data);
+      setLoading(false);
+    } catch (error: any) {
+      if (error.response.data.status === 403) {
+        return toast.error(error.response.data.msg);
+      }
+      toast.error("Something went wrong!");
+    }
+  }
+  useEffect(() => {
+    getBlog(id);
+  }, []);
+
+  return { loading, blog };
+};

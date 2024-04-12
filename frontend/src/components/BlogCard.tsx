@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import featuredImg from "../assets/featured_img.webp";
 import Avatar from "./Avatar";
 
@@ -26,9 +27,9 @@ const BlogCard = ({
       <div className="flex justify-between gap-10">
         <div className="basis-3/4 flex flex-col justify-between">
           <div>
-            <div className="font-extrabold text-base sm:text-lg md:text-2xl">
+            <Link to={`/blog/${blogid}`} className="font-extrabold text-base sm:text-lg md:text-2xl">
               {title}
-            </div>
+            </Link>
             <div className="hidden md:block mt-2">
               {content.slice(0, 500) + "..."}
             </div>

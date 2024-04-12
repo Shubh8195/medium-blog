@@ -1,12 +1,12 @@
 interface AvatarProps {
-  authorname: string;
-  size?: number;
+  authorname?: string;
+  size?: string;
 }
 
-const Avatar = ({ authorname, size = 8 }: AvatarProps) => {
+const Avatar = ({ authorname = "Anonymous", size = "w-8 h-8" }: AvatarProps) => {
   return (
     <div
-      className={`w-${size} h-${size} rounded-full bg-slate-500 flex justify-center items-center text-white`}
+      className={`${size} rounded-full bg-slate-500 flex justify-center items-center text-white`}
     >
       <div>{authorname.slice(0, 1)}</div>
     </div>
